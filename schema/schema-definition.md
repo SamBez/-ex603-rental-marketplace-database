@@ -42,6 +42,6 @@ PRIMARY_KEY (booking_id )
    price_per_night DECIMAL(10,2))	
 PRIMARY_KEY(property_id)
 
-5. User_Fav_Property( property_id INTEGER, user_id INTEGER )	
-PRIMARY_KEY (property_id, user_id)
+5. User_Fav_Property( property_id INTEGER, user_id INTEGER, date_added NOT NULL )	
+FOREIGN_KEY (property_id, user_id)
    
