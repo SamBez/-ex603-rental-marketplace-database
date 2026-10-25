@@ -14,21 +14,19 @@
 
 ## Unit 4 – Query Catalogue
 
-This section documents the SQL queries developed in Unit 4 for the rental marketplace database and the business questions each query answers.
+### Unit 4.1 – Aggregate Queries (`q4_1.sql`)
 
-### Unit 4.1 – Aggregate Queries (`/queries/unit4/q4_1.sql`)
+| Query | SQL Concept | Business Question | SQL Reference |
+|---|---|---|---|
+| 1 | Aggregate functions (`COUNT`, `SUM`, `AVG`, `MIN`, `MAX`) | How many viewing events and unique renters are there across the platform, and what are the total, average, shortest, and longest viewing durations? | [View SQL](q4_1.sql#L3-L10) |
+| 2 | `GROUP BY`, `LEFT JOIN` | How many viewing events does each property have, and what is its average viewing duration, including properties with no viewings? | [View SQL](q4_1.sql#L15-L25) |
+| 3 | `GROUP BY`, `HAVING` | Which properties have at least five viewing events, and what are their average viewing durations? | [View SQL](q4_1.sql#L30-L42) |
+| 4 | Multi-dimensional grouping | How do viewing counts, durations, and unique renter counts vary by city and property? | [View SQL](q4_1.sql#L50-L69) |
 
-| Query | SQL Concept | Business Question |
-|---|---|---|
-| Query 1 | Aggregate Functions (COUNT, SUM, AVG, MIN, MAX) | What are the total number of property viewings, total viewing duration, average duration, minimum and maximum duration, and number of unique renters across the platform? |
-| Query 2 | GROUP BY | How many viewings does each property receive, and what is the average viewing duration for each property? |
-| Query 3 | GROUP BY and HAVING | Which properties have at least five viewings, and what are their average viewing durations? |
-| Query 4 | Multi-Dimensional GROUP BY | How do viewing activity, viewing duration, and unique renter counts vary across cities and individual properties? |
+### Unit 4.2 – Advanced Aggregation Queries (`q4_2.sql`)
 
-### Unit 4.2 – Advanced Aggregation Queries (`/queries/unit4/q4_2.sql`)
-
-| Query | SQL Concept | Business Question |
-|---|---|---|
-| Part A | Conditional Aggregation (CASE WHEN) | How many total viewing events and failed events (cancelled or disputed) does each property have? |
-| Part B | GROUPING SETS | How do total viewing events and failed events compare across regions, and what are the platform-wide totals? |
-| Part C | Common Table Expression (WITH) | What is the average property failure rate among properties with at least five viewing events? |
+| Query | SQL Concept | Business Question | SQL Reference |
+|---|---|---|---|
+| Part A | Conditional aggregation (`CASE WHEN`) | How many viewing events and failed events (cancelled or disputed) does each property have? | [View SQL](q4_2.sql#L2-L19) |
+| Part B | `GROUPING SETS` | How many total and failed viewing events occur in each city, and how do these regional subtotals compare with the platform-wide grand total? | [View SQL](q4_2.sql#L22-L45) |
+| Part C | Common Table Expression (`WITH`) | What is the average property failure rate among properties with at least five viewing events? | [View SQL](q4_2.sql#L56-L69) |
