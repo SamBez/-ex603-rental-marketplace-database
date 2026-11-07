@@ -1,13 +1,13 @@
 ## Task 5.1
 
 ### **What feature or report on your platform could use the three-table join from Question 1? What information would it display?**
-### A Property Viewing History Report could use the three-table join to display which renters viewed specific properties and when those viewings occurred. The report would include the renter's name, property name, viewing date and time, and could also show the viewing status. This would help property managers track viewing activity and understand which properties are attracting more interest.
+A Property Viewing History Report could use the three-table join to display which renters viewed specific properties and when those viewings occurred. The report would include the renter's name, property name, viewing date and time, and could also show the viewing status. This would help property managers track viewing activity and understand which properties are attracting more interest.
 
 
 ### **Why is the junction table important for answering Question 2? What would make this analysis more difficult without it?**
-### The listing_amenities junction table is important because it manages the many-to-many relationship between properties and amenities. A property can have multiple amenities, such as parking, a gym, or a pool, and the same amenity can belong to multiple properties.
+ The listing_amenities junction table is important because it manages the many-to-many relationship between properties and amenities. A property can have multiple amenities, such as parking, a gym, or a pool, and the same amenity can belong to multiple properties.
 
-### Without the junction table, it would be difficult to efficiently identify properties that share certain amenities. We might need to store multiple amenities in a single column or create separate columns for each amenity, making the database harder to maintain and the queries more complicated.
+ Without the junction table, it would be difficult to efficiently identify properties that share certain amenities. We might need to store multiple amenities in a single column or create separate columns for each amenity, making the database harder to maintain and the queries more complicated.
 
 ## Task 5.2
 
@@ -70,3 +70,12 @@ As the rental marketplace grows, the `viewings` table could contain thousands or
 With larger datasets, PostgreSQL might prefer a **Hash Join** instead of repeated Nested Loop lookups. A **Merge Join** might also become appropriate if the joining records are already sorted or can be efficiently accessed in order.
 
 Adding suitable indexes, changing data distribution, or increasing table sizes could influence PostgreSQL's choice of execution algorithm.
+
+
+### Reflection
+
+As the rental marketplace grows, changes in table sizes, indexes, and the number of matching records could cause PostgreSQL to choose different join algorithms.
+
+For example, if the `viewings` table grows from 200 records to millions, PostgreSQL might prefer a **Hash Join** instead of a Nested Loop because it could be more efficient when processing large numbers of matching records. Adding indexes on `viewings.property_id` or `viewings.renter_id` could make indexed Nested Loop joins more efficient. A **Merge Join** might also become a better option if both tables are already sorted by their joining columns or can be accessed in sorted order.
+
+Additionally, if fewer viewing records match the `attended` status, an index on `viewing_status` could help PostgreSQL retrieve those records without scanning the entire table. These changes could improve query performance by reducing unnecessary scans and repeated lookups.
